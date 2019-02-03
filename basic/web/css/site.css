@@ -1,6 +1,7 @@
 html,
 body {
     height: 100%;
+
 }
 
 .wrap {
@@ -11,7 +12,9 @@ body {
 }
 
 .wrap > .container {
+
     padding: 70px 15px 20px;
+    background: white;
 }
 
 .footer {
@@ -112,4 +115,40 @@ a.desc:after {
 
 .nav > li > form > button.logout:focus {
     outline: none;
+}
+
+.mynav{
+    font-family: "Segoe UI",Arial,sans-serif;
+    background-color: #4CAF50;
+    font-size: 18px;
+    color: white;
+}
+/*
+.mynav{
+    margin-left: -15%;
+}
+*/
+.mynav a{
+    color: white;
+}
+
+.nav > li > a:hover{
+    background: white;
+}
+.mynav li:hover{
+    background: white;
+}
+.mynav a:hover{
+    color: black;
+}
+.titleTop{
+      font-family: "Segoe UI",Arial,sans-serif;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: #FFF;
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+    color: black;
 }

@@ -5,3 +5,4 @@
 $this->title = 'RandomSeed';
 ?>
 
+<h2>Проект Random Seed</h2>
