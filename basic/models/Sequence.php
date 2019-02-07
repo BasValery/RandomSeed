@@ -17,7 +17,9 @@ class Sequence extends ActiveRecord
 
 	public function rules(){
 		return[
-		 ['value', 'match', 'pattern' => '/^(\d{300,})$/', 'message' => 'Длина последовательности минимум 300 симвовлов.']
+		 ['value', 'match', 'pattern' => '/^(\d{300,})$/', 'message' => 'Длина последовательности минимум 300 симвовлов.'],
+		 ['value', 'required', 'message' => 'Длина последовательности минимум 300 симвовлов.']
+
 		];
 	}
 

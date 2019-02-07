@@ -7,7 +7,7 @@ use yii\helpers\Html;
 use app\assets\AppAsset;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
-
+use yii\helpers\Url; 
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
@@ -42,8 +42,8 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav '],
         'items' => [
-            ['label' => 'ГЛАВНАЯ', 'url' => ['/site/index']],
-            ['label' => 'СТАТИСТИКА', 'url' => ['/site/stat']]
+            ['label' => 'ГЛАВНАЯ', 'url' => [ Url::toRoute('site/index')]],
+            ['label' => 'СТАТИСТИКА', 'url' => [Url::toRoute('site/stat')]]
         ],
     ]);
     NavBar::end();

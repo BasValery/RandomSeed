@@ -19,5 +19,10 @@ class SiteController extends Controller
         return $this->render('index', compact('model'));
     }
 
+    public function actionTextresiver()
+    {
+    	$request = Yii::$app->request;
+    	return $request->post('text');
+    }
  
 }
