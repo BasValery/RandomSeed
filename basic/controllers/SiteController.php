@@ -7,15 +7,16 @@ use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
-use app\models\LoginForm;
-use app\models\ContactForm;
+
+use app\models\Sequence;
 
 class SiteController extends Controller
 {
 
     public function actionIndex()
     {
-        return $this->render('index');
+    	$model = new Sequence();
+        return $this->render('index', compact('model'));
     }
 
  
