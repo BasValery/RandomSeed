@@ -1,0 +1,19 @@
+.responceContainer{
+	margin-top: 3%;
+	padding:2%;
+	background-color:#e4e4e4;
+	border-radius: 10px;
+}
+.successHeader {
+    color:#4caf50;
+    font-size:18px;
+    font-weight: bold;
+
+}
+
+.errorHeader {
+    color:#a94442;
+    font-size:18px;
+    font-weight: bold;
+
+}

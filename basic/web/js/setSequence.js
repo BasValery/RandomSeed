@@ -2,14 +2,17 @@ $(function(){
 
 	$("#result").hide();
 	$("#btnSender").click(function(){
-		$.post('textresiver',
+		var str = $("#textSequence").val();
+		if(/^(\d{300,})$/.test(str)){
+		$.post('/site/textresiver',
 		{
 			text: $("#textSequence").val()
 		},
  		function(data,status){
-     	 	alert("\nStatus: " + status);
+     	 		$("#result").html(data);
+     	 		$("#result").show(700);
     		});
-		
+		}
 		});
 	$('#textSequence').keypress(function(e) {
     
