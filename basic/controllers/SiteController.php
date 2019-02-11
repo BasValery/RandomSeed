@@ -7,7 +7,7 @@ use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
-
+use app\business\RandomCheker;
 use app\models\Sequence;
 
 class SiteController extends Controller
@@ -50,12 +50,11 @@ class SiteController extends Controller
 			$responseError = "Некорректная последовательность.";
     		return $this->renderAjax('error', compact('responseError'));
     	}
-
+    	$randomCheker = new RandomCheker($text); 
     	$sequence->save();
 
 
-
-    	return $this->renderAjax('success');
+    	return $this->renderAjax('success', compact('randomCheker'));
     }
 
     private function uniqueValidatiton($text)

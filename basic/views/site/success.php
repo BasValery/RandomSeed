@@ -15,10 +15,14 @@ use app\business\RandomCheker;
 	  <tr>
 	  	<td>Мат. ожидание</td>
 	  	<td><?= RandomCheker::$expectedValue ?></td>
+	  	<td><?= $randomCheker->getValue() ?></td>
+	  	<td><?= $randomCheker->getValueMark() ?>%</td>
 	  </tr>
 	  <tr>
 	  	<td>Дисперсия</td>
-	  	 <td><?= RandomCheker::$dispersion ?></td>
+	  	<td><?= RandomCheker::$expectedDispersion ?></td>
+	  	<td><?= $randomCheker->getDispersion() ?></td>
+	  	<td><?= $randomCheker->getDispersionMark()?>%</td>
 	  </tr>
 	  <tr>
 	  	<td>Последовательность (2 числа)</td>
