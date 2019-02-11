@@ -78,6 +78,8 @@ class SiteController extends Controller
     					->Where(['ip' => $ip])
     					->orderBy(['request_time'  => SORT_DESC])
     					->one();
+    	if($lastTransaction == NULL)
+    		return true;
     	if(strtotime($requestTime) - strtotime($lastTransaction->request_time) < $this::$delay)
     	{
     		

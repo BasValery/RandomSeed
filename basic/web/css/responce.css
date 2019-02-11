@@ -1,8 +1,11 @@
 .responceContainer{
 	margin-top: 3%;
 	padding:2%;
-	background-color:#e4e4e4;
+	background-color:#fff;
+	border-color: #000;
+	border-style: solid;
 	border-radius: 10px;
+	 border-width: 2px;
 }
 .successHeader {
     color:#4caf50;
@@ -16,4 +19,21 @@
     font-size:18px;
     font-weight: bold;
 
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 2%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
 }
