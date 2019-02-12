@@ -26,15 +26,27 @@ use app\business\RandomCheker;
 	  </tr>
 	  <tr>
 	  	<td>Последовательность (2 числа)</td>
+	  	<td><?= round( $randomCheker->getExpectedRepeated(2), 2)?></td>
+	  	 	<td><?= round( $randomCheker->getRepeated(2), 5)?></td>
+	  	<td><?= round( $randomCheker->getRepeatedMark(2), 2)?></td>
 	  </tr>
 	  <tr>
 	  	<td>Последовательность (3 числа)</td>
+	  	<td><?= round( $randomCheker->getExpectedRepeated(3), 2)?></td>
+	  	<td><?= round( $randomCheker->getRepeated(3), 5)?></td>
+	  	<td><?= round( $randomCheker->getRepeatedMark(3), 2)?></td>
 	  </tr>
 	   <tr>
 	  	<td>Последовательность (4 числа)</td>
+	  	<td><?= round( $randomCheker->getExpectedRepeated(4), 2)?></td>
+	  	<td><?= round( $randomCheker->getRepeated(4), 5)?></td>
+	  	<td><?= round( $randomCheker->getRepeatedMark(4), 2)?></td>
 	  </tr>
 	  <tr>
 	  	<td>Последовательность (5 чисел)</td>
+	  	<td><?= round( $randomCheker->getExpectedRepeated(5), 2)?></td>
+	  	<td><?= round( $randomCheker->getRepeated(5), 5)?></td>
+	  	<td><?= round( $randomCheker->getRepeatedMark(5), 2)?></td>
 	  </tr>
 	</table>
 </div>
