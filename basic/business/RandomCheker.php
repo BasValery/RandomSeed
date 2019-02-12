@@ -62,7 +62,6 @@ class RandomCheker
 
 	public function getDispersionMark()
 	{
-
 		return $this->getMark(2, $this->dispersion, self::$expectedDispersion);	
 	}
 
