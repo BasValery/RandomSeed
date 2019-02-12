@@ -7,7 +7,7 @@ namespace app\business;
  */
 class RandomCheker
 {
-	public static $expectedValue = 5;
+	public static $expectedValue = 4.5;
 	public static $expectedDispersion = 8.3;
 
 	private $sequence;
@@ -57,8 +57,17 @@ class RandomCheker
 
 	public function getValueMark()
 	{
-		$maxDiff = 1.5;
-		$diff = abs( self::$expectedValue - $this->value);
+		return $this->getMark(1.5, $this->value, self::$expectedValue);	
+	}
+
+	public function getDispersionMark()
+	{
+
+		return $this->getMark(2, $this->dispersion, self::$expectedDispersion);	
+	}
+
+	private function getMark($maxDiff, $estimated, $expected){
+		$diff = abs( $expected- $estimated);
 		if($diff > $maxDiff)
 			return 0;
 
@@ -66,18 +75,5 @@ class RandomCheker
 			return 100;
 
 		return round(100 - $diff/$maxDiff*100);
-	}
-
-	public function getDispersionMark()
-	{
-		$maxDiff = 2;
-		$diff = abs( self::$expectedDispersion - $this->dispersion);
-		if($diff > $maxDiff)
-			return 0;
-
-		if($diff == 0)
-			return 100;
-
-	return round(100 - $diff/$maxDiff*100);
 	}
 }
