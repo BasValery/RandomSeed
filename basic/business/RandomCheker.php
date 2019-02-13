@@ -7,8 +7,11 @@ namespace app\business;
  */
 class RandomCheker
 {
-	public static $expectedValue = 4.5;
-	public static $expectedDispersion = 8.3;
+	public const $expectedValue = 4.5;
+	public const $expectedDispersion = 8.3;
+	private const $repeatedSequenceCount = 5;
+	private const $indicatorsCounts = 7;
+	private const $repeatedSequenceStartCount = 2;
 
 	private $sequence;
 	private $dispersion;
@@ -21,7 +24,7 @@ class RandomCheker
 		$this->findValue();
 		$this->findDispersion();
 
-		for ($i=2; $i <= 5; $i++) { 
+		for ($i=self::repeatedSequenceStartCount; $i <= self::repeatedSequenceCount; $i++) { 
 			$this->findRepeated($i);
 		}
 	}
@@ -80,41 +83,58 @@ class RandomCheker
 
 	private function findRepeated($count)
 	{
-		$temp = $this->sequence;
-		$average = 0;
+		
+		$repitationRank = 0;
+		$len = strlen($this->sequence);
+		$repeatedSequence = str_repeat("0", $count);
+		$permutationArray;
+		$permutations = pow(10, $count);
+		$expected = $len/$permutations;
+		$repitationRank = 0;
 
-		While(strlen( $temp) > $count){
-		$average += substr_count( $temp, substr($temp, 0, $count)); 
-		$temp = str_replace($temp,substr($temp, 0, $count), "");
+		for ($i=0; $i < $permutations; $i++) { 
+				
+			$permutationArray[$i] = str_repeat("0", $count - strlen(strval($i)).$i;
+		}	
+
+		for ($i=0; $i < $permutations; $i++) { 
+			$repitationRank -= $expected;
+			$repitationRank += substr_count($this->sequence, $permutationArray[$i])*$count;
 		}
+		$repitationRank = abs($repitationRank);
+		$result = 0;
+		if($repitationRank > $len)
+			result = 0;
+		else if($repitationRank == 0)
+			result = 100;
+		else
+			result = round(($repitationRank / $len) * 100);
 
-		$average /= (strlen($this->sequence)/$count);
-
-		$this->repeated[$count] = $average;
+		$this->repeated[$count] = $result;
 	}
 
-	public function getExpectedRepeated($count)
-	{
-		if($count < 0 || $count > 5)
-			return;
-		return strlen($this->sequence) / pow(10,$count);
-	}
+	
 
 	public function getRepeatedMark($count)
 	{
-		if($count < 0 || $count > 5)
-			return;
+		if($count < self::repeatedSequenceStartCount 
+		|| $count > self::repeatedSequenceCount)
+			return $this->repeated[$count];
 
-		$expect = $this->getExpectedRepeated($count);
-
-		return $this->getMark(2, $this->repeated[2], $expect);
 	}
-	public function getRepeated($count)
-	{
-		if($count < 0 || $count > 5)
-			return;
 
-		return $this->repeated[$count];
+	public function getTotalScore()
+	{
+		$average = 0;
+		$average += $this->getValueMark();
+		$average += $this->getDispersionMark();
+		for ($i=self::repeatedSequenceStartCount; $i <= self::repeatedSequenceCount; $i++){
+		$average += $this->getRepeatedMark($i)
+		}
+
+		$average/= self::indicatorsCounts;
+
+		return round($average);
 	}
 
 }
