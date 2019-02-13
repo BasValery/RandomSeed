@@ -7,11 +7,11 @@ namespace app\business;
  */
 class RandomCheker
 {
-	public const $expectedValue = 4.5;
-	public const $expectedDispersion = 8.3;
-	private const $repeatedSequenceCount = 5;
-	private const $indicatorsCounts = 7;
-	private const $repeatedSequenceStartCount = 2;
+	public const expectedValue = 4.5;
+	public const expectedDispersion = 8.3;
+	private const repeatedSequenceCount = 5;
+	private const indicatorsCounts = 7;
+	private const repeatedSequenceStartCount = 2;
 
 	private $sequence;
 	private $dispersion;
@@ -62,12 +62,12 @@ class RandomCheker
 
 	public function getValueMark()
 	{
-		return $this->getMark(1.5, $this->value, self::$expectedValue);	
+		return $this->getMark(1.5, $this->value, self::expectedValue);	
 	}
 
 	public function getDispersionMark()
 	{
-		return $this->getMark(2, $this->dispersion, self::$expectedDispersion);	
+		return $this->getMark(2, $this->dispersion, self::expectedDispersion);	
 	}
 
 	private function getMark($maxDiff, $estimated, $expected){
@@ -88,37 +88,20 @@ class RandomCheker
 		$len = strlen($this->sequence);
 		$repeatedSequence = str_repeat("0", $count);
 		$permutationArray;
-		$permutations = pow(10, $count);
-		$expected = $len/$permutations;
-		$repitationRank = 0;
+		$allPermutations = pow(10, $count);
 
-		for ($i=0; $i < $permutations; $i++) { 
-				
-			$permutationArray[$i] = str_repeat("0", $count - strlen(strval($i)).$i;
-		}	
+	
 
-		for ($i=0; $i < $permutations; $i++) { 
-			$repitationRank -= $expected;
-			$repitationRank += substr_count($this->sequence, $permutationArray[$i])*$count;
-		}
-		$repitationRank = abs($repitationRank);
-		$result = 0;
-		if($repitationRank > $len)
-			result = 0;
-		else if($repitationRank == 0)
-			result = 100;
-		else
-			result = round(($repitationRank / $len) * 100);
-
-		$this->repeated[$count] = $result;
+		$this->repeated[$count] =$sequenceDispersion/($allPermutations-1);
 	}
 
 	
 
 	public function getRepeatedMark($count)
 	{
-		if($count < self::repeatedSequenceStartCount 
-		|| $count > self::repeatedSequenceCount)
+		
+		if($count >= self::repeatedSequenceStartCount 
+		&& $count <= self::repeatedSequenceCount)
 			return $this->repeated[$count];
 
 	}
@@ -129,11 +112,10 @@ class RandomCheker
 		$average += $this->getValueMark();
 		$average += $this->getDispersionMark();
 		for ($i=self::repeatedSequenceStartCount; $i <= self::repeatedSequenceCount; $i++){
-		$average += $this->getRepeatedMark($i)
+		$average += $this->getRepeatedMark($i);
 		}
 
 		$average/= self::indicatorsCounts;
-
 		return round($average);
 	}
 
