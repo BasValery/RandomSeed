@@ -153,3 +153,9 @@ a.desc:after {
     color: black;
 }
 
+.welcomeMessage{
+    font-family: "Segoe UI",Arial,sans-serif;
+    margin-top: 1%;
+    margin-bottom: 2%;
+    font-size:15px;
+}
