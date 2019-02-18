@@ -9,7 +9,7 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\business\RandomCheker;
 use app\models\Sequence;
-use app\models\Staistic;
+use app\models\Statistic;
 
 class SiteController extends Controller
 {
@@ -53,7 +53,7 @@ class SiteController extends Controller
     		return $this->renderAjax('error', compact('responseError'));
     	}
     	$randomCheker = new RandomCheker($text); 
-    	Staistic::AddToStatistic($randomCheker->getTotalScore());
+    	Statistic::AddToStatistic($randomCheker->getTotalScore());
     	$sequence->save();
 
 

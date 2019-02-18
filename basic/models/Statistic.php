@@ -1,6 +1,11 @@
 <?php
+namespace app\models;
 
-class Staistic extends ActiveRecord
+use yii\db\ActiveRecord;
+/**
+ * 
+ */
+class Statistic extends ActiveRecord
 {
 	static public function AddToStatistic($value)
 	{
@@ -9,18 +14,23 @@ class Staistic extends ActiveRecord
 
 		if($record == NULL)
 		{
+			$instance = new Statistic();
 			$instance->average = $value;
 			$instance->count = 1;
 			$instance->save();
 		}
 		else
-		{
-			$instance = new Staistic();
+		{	
 			$average = $record->average;
-			$average /= $record->count;
+			$count = $record->count;
+			$average *= $count;
 			$average += $value;
-			$record->count++;
-			$record-> $average/$count;
+			$count++;
+			$average /=$count;
+
+
+			$record->count = $count;
+			$record->average = $average;
 			$record->save();
 		}
 	}

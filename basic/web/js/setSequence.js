@@ -3,7 +3,7 @@ $(function(){
 	$("#result").hide();
 	$("#btnSender").click(function(){
 		
-		$("#result").hide(700);
+		
 		var str = $("#textSequence").val();
 		if(/^(\d{300,60000})$/.test(str)){
 
@@ -15,9 +15,8 @@ $(function(){
 			text: $("#textSequence").val()
 		},
  		function(data,status){
- 				$("#result").hide(700);
      	 		$("#result").html(data);
-     	 		$("#result").show(700);
+     	 	
     		});
 		}
 		});
