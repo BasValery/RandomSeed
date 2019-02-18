@@ -8,6 +8,7 @@ $this->title = 'RandomSeed';
 
 $this->registerJsFile('@web/js/setSequence.js', ['depends' => 'yii\web\YiiAsset']);
 $this->registerCssFile('@web/css/responce.css');
+$this->registerCssFile('@web/css/loader.css');
 ?>
 
 <h2>Проект Random Seed</h2>

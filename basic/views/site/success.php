@@ -34,16 +34,6 @@ use app\business\RandomCheker;
 	  	<td colspan="2"></td>
 	  	<td><?=$randomCheker->getRepeatedMark(3)?>%</td>
 	  </tr>
-	   <tr>
-	  	<td>Уникальность (4 числа подряд)</td>
-	  	<td colspan="2"></td>
-	  	<td><?=$randomCheker->getRepeatedMark(4)?>%</td>
-	  </tr>
-	  <tr>
-	  	<td>Уникальность (5 чисел подряд)</td>
-	  		<td colspan="2"></td>
-	  	<td><?=$randomCheker->getRepeatedMark(5)?>%</td>
-	  </tr>
 	</table>
 	<h4>
 		Результат: <?= $randomCheker->getTotalScore() ?>%

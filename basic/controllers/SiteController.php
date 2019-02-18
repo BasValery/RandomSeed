@@ -22,20 +22,21 @@ class SiteController extends Controller
 
     public function actionTextresiver()
     {
+    	set_time_limit (180);
     	$text = Yii::$app->request->post('text');
     	$ip =  Yii::$app->request->userIP;
     	$requestTime = date("Y-m-d H:i:s");  
 
 
-  		if(!$this->uniqueValidatiton($text))
-    	{
-    		$responseError = "Такая последовательность уже существует";
-    		return $this->renderAjax('error', compact('responseError'));
-    	}
-
     	if(!$this->frequencyValidatiton($requestTime, $ip))
     	{
     		$responseError = "Вы отправляете последовательности слишком часто!";
+    		return $this->renderAjax('error', compact('responseError'));
+    	}
+
+  		if(!$this->uniqueValidatiton($text))
+    	{
+    		$responseError = "Такая последовательность уже существует";
     		return $this->renderAjax('error', compact('responseError'));
     	}
     	

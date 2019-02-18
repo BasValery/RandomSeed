@@ -9,9 +9,10 @@ class RandomCheker
 {
 	public const expectedValue = 4.5;
 	public const expectedDispersion = 8.3;
-	private const repeatedSequenceCount = 5;
-	private const indicatorsCounts = 7;
+	private const repeatedSequenceCount = 3;
+	private const indicatorsCounts = 4;
 	private const repeatedSequenceStartCount = 2;
+	private const threeSigms = 99.7;
 
 	private $sequence;
 	private $dispersion;
@@ -78,8 +79,9 @@ class RandomCheker
 		if($diff == 0)
 			return 100;
 
-		return round(100 - $diff/$maxDiff*100);
+		return round(100 - ($diff/$maxDiff)*100);
 	}
+
 
 	private function findRepeated($count)
 	{
@@ -88,21 +90,44 @@ class RandomCheker
 		$len = strlen($this->sequence);
 		$repeatedSequence = str_repeat("0", $count);
 		$permutationArray;
+		$meetArray;
 		$allPermutations = pow(10, $count);
 
-	
 
-		$this->repeated[$count] =$sequenceDispersion/($allPermutations-1);
-	}
 
-	
+		for ($i=0; $i < $allPermutations ; $i++) { 
+			$permutationArray[$i] = str_repeat("0", $count - strlen($i)).$i;
+		}
+
+
+		for ($i=0; $i < $allPermutations ; $i++) { 
+			$meetArray[$permutationArray[$i]] = substr_count($this->sequence, $permutationArray[$i]);
+		}
+
+		$expectedValue = $len / $allPermutations; 
+
+		
+
+		
+		$maxDiff = 0;
+		$deviation = 0;
+		foreach ($meetArray as $value) {
+			$deviation += abs ($value - $expectedValue);
+			if($value > $maxDiff)
+				$maxDiff = $value; 
+		}
+		$deviation /= $allPermutations;
+
+		$this->repeated[$count] = 100 - ( abs($deviation - $expectedValue) / $expectedValue) * 100;
+		
+	}	
 
 	public function getRepeatedMark($count)
 	{
 		
 		if($count >= self::repeatedSequenceStartCount 
 		&& $count <= self::repeatedSequenceCount)
-			return $this->repeated[$count];
+			return round($this->repeated[$count]);
 
 	}
 
@@ -116,7 +141,9 @@ class RandomCheker
 		}
 
 		$average/= self::indicatorsCounts;
+		
 		return round($average);
+
 	}
 
 }
