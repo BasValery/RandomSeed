@@ -4,7 +4,7 @@ class Staistic extends ActiveRecord
 {
 	static public function AddToStatistic($value)
 	{
-		$instance = new Staistic();
+	
 		$record = self::find()->one();
 
 		if($record == NULL)
@@ -15,6 +15,7 @@ class Staistic extends ActiveRecord
 		}
 		else
 		{
+			$instance = new Staistic();
 			$average = $record->average;
 			$average /= $record->count;
 			$average += $value;
