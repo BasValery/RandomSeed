@@ -44,6 +44,7 @@ AppAsset::register($this);
         'items' => [
             ['label' => 'ГЛАВНАЯ', 'url' => [ Url::toRoute('site/index')]],
             ['label' => 'СТАТИСТИКА', 'url' => [Url::toRoute('site/stat')]]
+            ['label' => 'W.T.F.', 'url' => [Url::toRoute('site/wtf')]]
         ],
     ]);
     NavBar::end();
