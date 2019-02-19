@@ -21,6 +21,13 @@ class SiteController extends Controller
         return $this->render('index', compact('model'));
     }
 
+    public function actionStatistic()
+    {
+        $average = Statistic::find()->one()->average;
+
+        return $this->render('statistic', compact('average'));
+    }
+
     public function actionTextresiver()
     {
     	set_time_limit (180);

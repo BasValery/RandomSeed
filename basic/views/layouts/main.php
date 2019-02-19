@@ -43,7 +43,7 @@ AppAsset::register($this);
         'options' => ['class' => 'navbar-nav '],
         'items' => [
             ['label' => 'ГЛАВНАЯ', 'url' => [ Url::toRoute('site/index')]],
-            ['label' => 'СТАТИСТИКА', 'url' => [Url::toRoute('site/stat')]],
+            ['label' => 'СТАТИСТИКА', 'url' => [Url::toRoute('site/statistic')]],
             ['label' => 'W.T.F.', 'url' => [Url::toRoute('site/wtf')]]
         ],
     ]);
