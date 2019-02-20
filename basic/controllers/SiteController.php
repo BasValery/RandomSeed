@@ -28,6 +28,11 @@ class SiteController extends Controller
         return $this->render('statistic', compact('average'));
     }
 
+    public function actionWtf()
+    {
+        return $this->render('wtf');
+    }
+
     public function actionTextresiver()
     {
     	set_time_limit (180);
