@@ -16,7 +16,9 @@ AppAsset::register($this);
 <head>
     <meta charset="<?= Yii::$app->charset ?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
+    <meta name="google-site-verification" content="C6yN-Hg0pR0rhbHFJn-iWM_5QnnrRAKArqmtMhlw1kM" />
+    <meta name="description" content="Сервис для оценки случайности последовательностей сгенерированных человеком" >
+    <meta name="keywords" content="случайные числа, генератор случайных чисел, статистика, исследование">
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
