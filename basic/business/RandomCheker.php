@@ -112,13 +112,14 @@ class RandomCheker
 		$maxDiff = 0;
 		$deviation = 0;
 		foreach ($meetArray as $value) {
-			$deviation += abs ($value - $expectedValue);
-			if($value > $maxDiff)
-				$maxDiff = $value; 
+			$deviation = abs ($value - $expectedValue);
+			if($deviation > $maxDiff){
+				$maxDiff = $deviation; 
+			}
 		}
-		$deviation /= $allPermutations;
 
-		$this->repeated[$count] = 100 - ( abs($deviation - $expectedValue) / $expectedValue) * 100;
+
+		$this->repeated[$count] = $this->getMark($expectedValue * (10 + (10 - log10($len))), $maxDiff, 0);
 		
 	}	
 
